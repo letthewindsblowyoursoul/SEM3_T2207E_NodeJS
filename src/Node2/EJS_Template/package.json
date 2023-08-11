@@ -1,0 +1,11 @@
+{
+  "name": "ejs",
+  "version": "1.0.0",
+  "description": "SEM 3 T2207E Node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ttmh",
+  "license": "ISC"
+}
