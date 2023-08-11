@@ -1,0 +1,14 @@
+{"user":[{
+    "id": 1,    
+   "name": "Nguyen Van An",
+       "age": 18,
+       "mark": 9
+   },
+   {
+    "id": 2,    
+   "name": "Tran cao Ba",
+       "age": 18,
+       "mark": 8.5
+   } 
+]
+}
