@@ -1,0 +1,6 @@
+Install HTML Snippet
+npm i ejs
+npm i jade
+cdn data deliverry
+npm bootstrap
+landing page trang giới thiệu 
