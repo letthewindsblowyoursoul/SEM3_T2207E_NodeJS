@@ -1,1 +1,8 @@
-[{"name":"q5nguyenn","age":"18","address":"Thái Bình","id":1},{"name":"Luna Lovegood","age":"19","address":"Hải Phòng","id":2},{"name":"Bang","age":"20","address":"Hà Nội","id":3},{"name":"I Am Groot","age":"20","address":"Nghệ An","id":4},{"name":"Harry Potter","age":"22","address":"Quảng Ninh","id":5},{"name":"Captain America","age":"2222","address":"Thái Bình","id":6}]
+[
+  { "name": "q5nguyenn2", "age": "18", "address": "Thái Bình", "id": 1 },
+  { "name": "Luna Lovegood", "age": "19", "address": "Hải Phòng", "id": 2 },
+  { "name": "Bang", "age": "20", "address": "Hà Nội", "id": 3 },
+  { "name": "I Am Groot", "age": "20", "address": "Nghệ An", "id": 4 },
+  { "name": "Harry Potter", "age": "22", "address": "Quảng Ninh", "id": 5 },
+  { "name": "Captain America", "age": "2222", "address": "Thái Bình", "id": 6 }
+]
