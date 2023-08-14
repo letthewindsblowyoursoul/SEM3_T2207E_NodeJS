@@ -1,0 +1,9 @@
+doctype html
+html
+    head 
+        title Jade Page 
+    body 
+        each products  in product
+            p #{products.name}
+            p #{products.price}
+            p #{products.quantity}

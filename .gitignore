@@ -433,3 +433,6 @@ Day1/ExpressApp/node_modules/vary/index.js
 Day1/ExpressApp/node_modules/vary/LICENSE
 Day1/ExpressApp/node_modules/vary/package.json
 Day1/ExpressApp/node_modules/vary/README.md
+node_modules
+package-lock.json
+package.json
