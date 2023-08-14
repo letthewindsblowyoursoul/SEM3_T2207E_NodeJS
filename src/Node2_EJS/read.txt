@@ -1,7 +1,11 @@
 Install HTML Snippet
+npm init
 npm i ejs
 npm i jade
 cdn data deliverry
 npm bootstrap
 landing page trang giới thiệu 
 pull request: review cho phép đẩy code ?
+Static file :
+event loop
+call back:
