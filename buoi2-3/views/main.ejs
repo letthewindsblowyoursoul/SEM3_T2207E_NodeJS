@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0">
+    <link rel='stylesheet' href='/dist/css/bootstrap.min.css'>
+    <title>User</title>
+</head>
+
+<body>
+    <div class="row">
+
+        <% for(var i=0; i < lss.length; i++) { %>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="./<%= lss[i].img %>" class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= lss[i].name %>
+                        </h5>
+                        <p class="card-text">
+                            <%= lss[i].job %>
+                        </p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>
+    </div>
+    <form action="/add" method="get">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="img">Upload</label>
+            <input type="file" class="form-control" id="img" name="img">
+          </div>
+        <label for="name">name:</label>
+        <input type="name" id="name" name="name"><br><br>
+        <label for="job">job:</label>
+        <input type="text" id="job" name="job"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+  <br><br>
+    <form action="/del" method="get">
+        
+        <label for="name">name:</label>
+        <input type="name" id="name" name="name"><br><br>
+      
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+
+</html>
