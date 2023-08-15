@@ -1,7 +1,6 @@
-// Importing express module
 const express = require("express");
 
-const port = 80;
+const port = 90;
 const app = express();
 
 
@@ -17,13 +16,10 @@ app.get("/", (req, res) => {
     });
  
     // res.send("Hello World");
-    return res.redirect("index.html");
+    return res.redirect("home.html");
 });
 
 // Handling the get request
-app.get("/submited", (req, res) => {
-	return res.redirect("submited.html");
-});
 
 // Starting the server on the 80 port
 app.listen(port, () => {
