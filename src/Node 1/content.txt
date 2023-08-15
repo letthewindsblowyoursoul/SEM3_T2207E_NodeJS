@@ -1,2 +1,0 @@
-1. Cơ bản về node json
-2. Sharing function giữa các file: sử dụng require hoặc export modules

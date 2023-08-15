@@ -1,4 +1,0 @@
-1. npx express-generator
-2 npm install // Setting Dependency
-
-https://expressjs.com/en/starter/generator.html
