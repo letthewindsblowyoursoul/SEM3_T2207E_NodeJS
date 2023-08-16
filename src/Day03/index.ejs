@@ -157,31 +157,37 @@
         $('#btn-accept').click(function (e) {
           $('#form-delete-user').submit();
         });
+
+        //
+        $('#btnAddNewUser').click(function (e) {
+          $('#modalHandleUserTitle').text('Add new user');
+          $('#id').val('');
+          $('#name').val('');
+          $('#age').val('');
+          $('#address').val('');
+          $('#handle-user').attr('action', '/user/store');
+        });
+        //
+        $('.btn-edit-user').click(function (e) {
+          let user = $(this).data('user');
+          $('#modalHandleUserTitle').text('Edit user');
+          $('#name').val(user.name);
+          $('#age').val(user.age);
+          $('#address').val(user.address);
+          $('#handle-user').attr('action', `/user/update/${user.id}`);
+        });
+        //
+        $('#btn-accept-handle-user').click(function (e) {
+          if (required()) $('#handle-user').submit();
+          else return;
+        });
+        //
+        $('#handle-user').keydown(function (e) {
+          if (e.key == 'Enter' && required()) {
+            this.submit();
+          }
+        });
       });
-      //
-      $('#btnAddNewUser').click(function (e) {
-        $('#modalHandleUserTitle').text('Add new user');
-        $('#id').val('');
-        $('#name').val('');
-        $('#age').val('');
-        $('#address').val('');
-        $('#handle-user').attr('action', '/user/store');
-      });
-      //
-      $('.btn-edit-user').click(function (e) {
-        let user = $(this).data('user');
-        $('#modalHandleUserTitle').text('Edit user');
-        $('#name').val(user.name);
-        $('#age').val(user.age);
-        $('#address').val(user.address);
-        $('#handle-user').attr('action', `/user/update/${user.id}`);
-      });
-      //
-      $('#btn-accept-handle-user').click(function (e) {
-        if (required()) $('#handle-user').submit();
-        else return;
-      });
-      //
       function required() {
         if ($('#name').val() == '' || $('#age').val() == '' || $('#address').val() == '') {
           $('#required').text('*Some fields are empty!');
