@@ -1,11 +1,25 @@
 Install HTML Snippet
+git ignore temple nodejs,c#,...
 npm init
 npm i ejs
 npm i jade
-cdn data deliverry
+cdn data deliverry  
 npm bootstrap
 landing page trang giới thiệu 
 pull request: review cho phép đẩy code ?
 Static file :
 event loop
 call back:
+const var let
+mongodb atlas
+--------------------
+api 
+b1 install express, mongoose , env ,
+b2 tao san api 
+b3 cau hinh connect string
+tao schema
+tao ketnoi
+test postman
+
+docker-compose up
+docker-compose down

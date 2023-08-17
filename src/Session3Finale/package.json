@@ -1,0 +1,11 @@
+{
+  "name": "session3finale",
+  "version": "1.0.0",
+  "description": "s3",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
