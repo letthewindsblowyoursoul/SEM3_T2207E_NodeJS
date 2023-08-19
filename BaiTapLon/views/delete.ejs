@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Student</title>
+</head>
+<body>
+    <h1>Delete Student</h1>
+    <form id="deleteStudentForm">
+        <input type="number" name="userId" placeholder="User ID">
+        <button type="submit">Delete Student</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#deleteStudentForm").submit(function(event) {
+                event.preventDefault();
+
+                var userId = $(this).find("input[name='userId']").val();
+                $.ajax({
+                    type: "DELETE",
+                    url: "/del/" + userId,
+                    success: function(response) {
+                        alert("Student deleted successfully");
+                    },
+                    error: function(error) {
+                        alert("Error deleting student");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

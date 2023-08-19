@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+</head>
+<body>
+    <h1>Add Student</h1>
+    <form id="addStudentForm">
+        <input type="number" name="userId" placeholder="UserID">
+        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="fullname" placeholder="Fullname">
+        <input type="text" name="address" placeholder="Address">
+        <button type="submit">Add Student</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#addStudentForm").submit(function(event) {
+                event.preventDefault();
+
+                var formData = $(this).serialize();
+                alert(formData);
+                $.ajax({
+                    type: "POST",
+                    url: "/user",
+                    data: formData,
+                    success: function(response) {
+                        alert("Student added successfully");
+                    },
+                    error: function(error) {
+                        alert("Error adding student");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
