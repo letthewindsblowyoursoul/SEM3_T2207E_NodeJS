@@ -1,6 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
 var dotenv = require('dotenv');
+const uniqueValidator = require('mongoose-unique-validator');
 
 dotenv.config({ path: "./config.env"});
 var app = express();
@@ -14,22 +15,41 @@ mongoose.connect(process.env.DATABASE_LOCAL)
                     console.log("Finally...");
 })
 
-                var userSchema = mongoose.Schema({
-                    userID: {
-                        type: String
-                    },
+var userSchema = mongoose.Schema({
+                    userid: { type: Number, unique: true },
                     username: String,
                     fullname: String,
                     address: String,
 });
+
+userSchema.plugin(uniqueValidator);
                 
 const User = mongoose.model("User", userSchema);
 app.use(express.json());
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
-app.post("/user", (req , res) => {
-    const newUser = new User(req.body);
+app.get("/", (req, res) => {
+    res.set({
+        "Allow-access-Allow-Origin": "*",
+    });
+ 
+    // res.send("Hello World");
+    return res.redirect("index.html");
+});
 
-    newUser
+
+app.post("/add-user", async (req , res) => {
+    const { username, fullname, address } = req.body;
+
+    
+    const newUser = new User({
+        username,
+        fullname,
+        address
+      });
+
+    await newUser
     .save()
     .then((doc) => {
         console.log(doc);
