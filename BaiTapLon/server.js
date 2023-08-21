@@ -75,11 +75,11 @@ app.delete("/:userId", (req, res) => {
 
 });
 
-app.get("/user", (req, res) => {
+app.get("/add", (req, res) => {
     res.render("user");
 });
 
-app.post("/user", (req, res) => {
+app.post("/add", (req, res) => {
     console.log("Create....");
     const newUser = new User({
         userId: req.body.userId,
@@ -105,6 +105,7 @@ app.get("/del", (req, res) => {
 });
 
 app.delete("/del/:userId", (req, res) => {
+    console.log("Delete....");
     console.log(req.params.userId);
     const userId = req.params.userId;
 

@@ -2,15 +2,35 @@
 <html>
 <head>
     <title>Add Student</title>
+    <style>
+        form{
+            width: 100%;
+        }
+        input{
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <h1>Add Student</h1>
     <form id="addStudentForm">
-        <input type="number" name="userId" placeholder="UserID">
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="fullname" placeholder="Fullname">
-        <input type="text" name="address" placeholder="Address">
-        <button type="submit">Add Student</button>
+        <table>
+            <tr>
+                <td><input type="number" name="userId" placeholder="UserID"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="username" placeholder="Username"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="fullname" placeholder="Fullname"></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="address" placeholder="Address"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Add Student</button></td>
+            </tr>
+        </table>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -23,7 +43,7 @@
                 alert(formData);
                 $.ajax({
                     type: "POST",
-                    url: "/user",
+                    url: "/add",
                     data: formData,
                     success: function(response) {
                         alert("Student added successfully");
