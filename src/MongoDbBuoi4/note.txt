@@ -1,0 +1,12 @@
+b1: npm i express/mongoose/dotenv
+b2: tạo api
+b3 Cấu hình connecting string
+b4 Đọc kết nối
+b5 Tạo Schema
+b6 Save()
+b7 Dùng postman để thử
+
+
+docker-compose up: chạy file docker composer
+docker-compose up -d: chạy đến khi nào muốn dừng
+docker-compose down: dừng
