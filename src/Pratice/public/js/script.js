@@ -23,10 +23,11 @@ function fetchUsers() {
         const removeButtonCell = document.createElement('td');
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
+        removeButton.classList.add("btn", "btn-danger");
         removeButton.addEventListener('click', () => removeUser(user._id));
         removeButtonCell.appendChild(removeButton);
         row.appendChild(removeButtonCell);
-
+        
         tableBody.appendChild(row);
       });
     })
