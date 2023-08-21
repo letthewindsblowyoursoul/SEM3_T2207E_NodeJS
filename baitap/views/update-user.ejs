@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Home page</title>
+        <link rel='stylesheet' href='/dist/css/bootstrap.min.css'>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <a href="/">
+                <h3>Home page</h3>
+            </a>
+            <h2>UPDATE User</h2>
+            <form action="/<%= usersps._id %>" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="hidden" name='userid' value="<%= usersps._id %>" disabled>
+                </div>
+                <div class="form-group">
+                    <label>User ID</label>
+                    <input class="form-control" type="text" name='userinvid' value="<%= usersps.userid %>" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input class="form-control" type="text" name='username' value="<%= usersps.username %>" disabled>
+                </div>
+                <div class="form-group">
+                    <label>Full name</label>
+                    <br>
+                    <label>First Name</label>
+                    <input class="form-control" type="text" name='firstName' value="<%= usersps.firstName %>">
+                    <label>Last Name</label>
+                    <input class="form-control" type="text" name='lastName' value="<%= usersps.lastName %>">
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input class="form-control" type="text" name='age' value="<%= usersps.age %>">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input  class="form-control" type="text" name='address' value="<%= usersps.address %>">
+                </div>
+                <div class="form-group">
+                    <label>Created</label>
+                    <input class="form-control" type="text"  value="<%= usersps.created %>" disabled>
+                </div>
+
+                <input id="update-btn" class="btn btn-primary" type="submit" value="SAVE">
+                <input id="update-btn" class="btn btn-secondary" type="button" value="DELETE"
+                    onclick="handleDeleteUser('<%= usersps._id %>')">
+            </form>
+        </div>
+        <script>
+            function handleDeleteUser(value) {
+                $.ajax({
+                    url: '/' + value,
+                    type: 'DELETE',
+                    success: function (result) {
+                        $(location).attr('href', '/');
+                    }
+                })
+            }
+        </script>
+    </body>
+</html>

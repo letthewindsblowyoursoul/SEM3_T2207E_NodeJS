@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Home page</title>
+        <link rel='stylesheet' href='/dist/css/bootstrap.min.css'>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <a href="/"><h3>Home page</h3></a>
+            <h2>ADD User</h2>
+            <form action="/" method="POST">
+                <div class="form-group">
+                    <label>User ID</label>
+                    <input class="form-control" type="text" name='userid'>
+                </div>
+                <div class="form-group">
+                    <label>User name</label>
+                    <input class="form-control" type="text" name='username'>
+                </div>
+ 
+
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input class="form-control" type="text" name='firstName'>
+                </div>
+               
+
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" type="text" name='lastName'>
+                </div>
+
+                <div class="form-group">
+                    <label>Age</label>
+                    <input class="form-control" type="text" name='age'>
+                </div>
+                 
+                <div class="form-group">
+                    <label>address</label>
+                    <input  class="form-control" type="text" name='address'> 
+                </div>
+
+                <input id="add-btn" class="btn btn-primary" type="submit" value="ADD User">
+            </form>
+        </div>
+        </body>
+</html>

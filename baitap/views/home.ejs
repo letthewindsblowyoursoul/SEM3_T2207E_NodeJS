@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <title>Home page</title>
+        <link rel='stylesheet' href='/dist/css/bootstrap.min.css'>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>User List</h2>
+            <a href="/add-user" class="btn btn-success float-right">Add User</a>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th>User ID</th> 
+                        <th>Username</th>
+                        <th>Age</th>
+                        <th>Edit</th>
+                        <th>ID get</th>
+                    </tr>
+                </thead>
+                <% for(var i=0; i < usersps.length; i++) { %>
+                <tr ondblclick="handleUpdateUser('<%= usersps[i]._id %>')">
+                     <td><%= usersps[i].userid %></td> 
+                    <td><%= usersps[i].username %></td>
+                    <td><%= usersps[i].age %></td>
+                    <td>
+                        <input class="btn btn-primary" type="button" value="Update"
+                            onclick="handleUpdateUser('<%= usersps[i]._id %>')">
+                    </td>
+                    <td>
+                        <input class="btn btn-primary" type="button" value="getID"
+                           id="delajax" onclick="takeid('<%= usersps[i]._id %>')">
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+            <script>
+                function handleUpdateUser(value) {
+                    $(location).attr('href', '/update-user/' + value);
+                }
+                function takeid(value){
+                    //var click = value ;
+     document.getElementById('type').value= value;
+                }
+
+            </script>
+        </div>
+
+<div class="container">
+    <h2>DEL User AJAX</h2>
+    <form action="/" method="DELETE">
+        <div class="form-group">
+            <input class="form-control" type="text" name='type' id="type" value="click on get id " disabled>
+        </div>
+        
+        <input id="deleted-btn" class="btn btn-secondary" type="button" value="DELETE">    
+    </form>
+
+</div>
+<script> function deleteItem() {
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:2512/",
+        data: {
+            userid: req.params.type,
+        },
+        error: function(jqXHR, textStatus, err) {
+            //show error message
+            alert('text status '+textStatus+', err '+err)
+        }
+    });
+}//delItem()
+
+$('#delete-btn').on('click', function() {
+    deleteItem();
+})</script>
+        <div class="container">
+            
+            <h2>ADD User AJAX</h2>
+            <form action="/"  method="POST">
+                <div class="form-group">
+                    <label>User ID</label>
+                    <input class="form-control" type="text" name='userid'>
+                </div>
+                <div class="form-group">
+                    <label>User name</label>
+                    <input class="form-control" type="text" name='username'>
+                </div>
+ 
+
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input class="form-control" type="text" name='firstName'>
+                </div>
+               
+
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" type="text" name='lastName'>
+                </div>
+
+                <div class="form-group">
+                    <label>Age</label>
+                    <input class="form-control" type="text" name='age'>
+                </div>
+                 
+                <div class="form-group">
+                    <label>address</label>
+                    <input  class="form-control" type="text" name='address'> 
+                </div>
+
+                <input id="add-btn" class="btn btn-primary" type="submit" value="ADD User">
+            </form>
+        </div>
+        <script>
+        function postItem() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:2512/",
+            data: {
+                userid: req.body.userid,
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        age: req.body.age,
+        address: req.body.address
+            },
+            error: function(jqXHR, textStatus, err) {
+                //show error message
+                alert('text status '+textStatus+', err '+err)
+            }
+        });
+    }//postItem()
+
+    $('#add-btn').on('click', function() {
+        postItem();
+    })</script>
+
+
+
+    </body>
+    
+</html>
