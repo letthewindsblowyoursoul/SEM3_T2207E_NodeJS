@@ -20,7 +20,7 @@
 		<h1>
 			User form
 		</h1>
-		<form id="userForm" action="/add-user" method="POST">
+		<form id="userForm" >
 			<div class="form-floating mb-3">
 				<label for="username">User Name</label>
 				<input type="text" class="form-control" name="username" id="username"  placeholder="User Name" required>
@@ -33,7 +33,7 @@
 				<label for="address">Address</label>
 				<input type="text" class="form-control" name="address" id="address"  placeholder="Address" required>
 			</div>
-			<button type="submit">Add user</button>
+			<button type="submit" id="submit">Add user</button>
         </form>
 		<div class="row">
 			<h1 class="col sm-12 ">Users List</h1>

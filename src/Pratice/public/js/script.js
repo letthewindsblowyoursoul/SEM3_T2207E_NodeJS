@@ -48,5 +48,17 @@ function fetchUsers() {
  fetchUsers();
 
  // Submit form using AJAX
-
+ $(document).ready(function () {
+  $("#submit").click(function () {
+     $.post("/add-user",
+        {
+           username : $("#username").val(),
+           fullname : $("#fullname").val(),
+           address : $("#address").val()
+        },
+        function (data, status) {
+           console.log(data);
+        });
+  });
+});
  
