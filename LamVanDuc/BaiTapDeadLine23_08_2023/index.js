@@ -19,7 +19,6 @@ myApp.get('/index', (req, res) => {
 //====================== api ===============
 
 myApp.post('/api/v1/User',async (req , response)=>{
-    response.setHeader("Content-Type", "application/json");
     try{
         var body = req.body;
         
