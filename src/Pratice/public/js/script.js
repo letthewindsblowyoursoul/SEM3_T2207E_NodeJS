@@ -1,25 +1,37 @@
 function fetchUsers() {
-   fetch('/users')
-     .then(response => response.json())
-     .then(data => {
-       const userList = document.getElementById('userList');
-       userList.innerHTML = '';
+  fetch('/users')
+    .then(response => response.json())
+    .then(data => {
+      const tableBody = document.getElementById('userTableBody');
+      tableBody.innerHTML = '';
 
-       data.forEach(user => {
-         const li = document.createElement('li');
-         li.textContent = `${user.username} (${user.fullname}, ${user.address})`;
+      data.forEach(user => {
+        const row = document.createElement('tr');
+        
+        const usernameCell = document.createElement('td');
+        usernameCell.textContent = user.username;
+        row.appendChild(usernameCell);
 
-         const removeButton = document.createElement('button');
-         removeButton.textContent = 'Remove';
-         removeButton.addEventListener('click', () => removeUser(user._id));
+        const fullnameCell = document.createElement('td');
+        fullnameCell.textContent = user.fullname;
+        row.appendChild(fullnameCell);
 
-         li.appendChild(removeButton);
-         userList.appendChild(li);
-       });
-     })
-     .catch(error => console.error('Error fetching users:', error));
- }
+        const addressCell = document.createElement('td');
+        addressCell.textContent = user.address;
+        row.appendChild(addressCell);
 
+        const removeButtonCell = document.createElement('td');
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => removeUser(user._id));
+        removeButtonCell.appendChild(removeButton);
+        row.appendChild(removeButtonCell);
+
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => console.error('Error fetching users:', error));
+}
  // Function to remove a user
  function removeUser(userId) {
    fetch(`/remove-user/${userId}`, {
@@ -37,15 +49,4 @@ function fetchUsers() {
 
  // Submit form using AJAX
 
- $(document).ready(function () {
-   $("#submit").click(function () {
-      $.post("/request",
-         {
-            name: "viSion",
-            designation: "Professional gamer"
-         },
-         function (data, status) {
-            console.log(data);
-         });
-   });
-});
+ 

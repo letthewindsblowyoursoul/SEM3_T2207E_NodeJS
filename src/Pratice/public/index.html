@@ -35,9 +35,23 @@
 			</div>
 			<button type="submit">Add user</button>
         </form>
+		<div class="row">
+			<h1 class="col sm-12 ">Users List</h1>
+			<table class="col sm-12">
+				<thead>
+					<tr>
+					  <th>Username</th>
+					  <th>Fullname</th>
+					  <th>Address</th>
+					  <th>Actions</th>
+					</tr>
+				  </thead>
+				  <tbody id="userTableBody">
+					<!-- User data will be inserted here dynamically -->
+				  </tbody>
+			</table>
+		</div>
 	</div>
-	<h1>Users</h1>
-  	<ul id="userList"></ul>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity=
 		"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
