@@ -1,5 +1,6 @@
 Install HTML Snippet
 git ignore temple nodejs,c#,...
+npm i express
 npm init
 npm i ejs
 npm i jade
@@ -23,3 +24,11 @@ test postman
 
 docker-compose up
 docker-compose down
+
+------------------------------buoi5
+mongodb transatrion,cluster
+Authen session,examf
+
+
+midderware
+Express session : cho phép server keept state( trạng thái )
