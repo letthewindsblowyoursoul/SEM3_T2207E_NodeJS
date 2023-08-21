@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0">
+	<style>
+		.container {
+			width: 500px;
+			margin: auto;
+			text-align: center;
+		}
+	</style>
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<script src="/js/bootstrap.js"></script> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+</head>
+
+<body>
+	<div class="container">
+		<h1>AJAX Example.</h1>
+		
+		<button id="submit"class ="btn btn-primary" >Submit</button>
+		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addData">Add User</button>
+		
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="addData" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">Add new user information</h4>
+			</div>
+			<div class="modal-body">
+				<div class="mb-3">
+					<label class="form-label">Username</label>
+					<input type="text" name="username" id="username" class="form-control" />
+				</div>
+				<div class="mb-3">
+					<label class="form-label">Age</label>
+					<input type="number" name="age" id="age" class="form-control" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary" data-dismiss="modal" id="addUser">Submit</button>
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity=
+		"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous">
+	</script>
+	<script src="js/script.js"></script>
+</body>
+
+</html>

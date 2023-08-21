@@ -1,0 +1,18 @@
+{
+  "name": "node7express",
+  "version": "1.0.0",
+  "description": "Basic express",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "cuongnx",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.0.3",
+    "morgan": "^1.10.0"
+  }
+}

@@ -5,3 +5,6 @@ src/Node 3 Bootstrap/node_modules/*
 src/Node 3 Express/node_modules/*
 src/Node 3 Templates/Jade/node_modules/*
 src/Node 3 Templates/EJS/node_modules/*
+src/Node 5/NodeAjax_Simple/node_modules/*
+src/Node 8/node_modules/*
+src/Node 8/public/*
