@@ -32,3 +32,12 @@ Authen session,examf
 
 midderware
 Express session : cho phép server keept state( trạng thái )
+
+
+ Xây dựng ứng dụng expressjs ejs jade bootstrap pug 
+ eventload
+ restAPI
+ database
+ npx express generator
+
+session,encrypt
