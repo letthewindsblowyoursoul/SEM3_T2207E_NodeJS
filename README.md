@@ -1,2 +1,0 @@
-# SEM3_T2207E_NodeJS
-SEM 3 T2207E Node JS
