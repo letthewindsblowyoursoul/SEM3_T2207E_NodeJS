@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+		initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container mt-3">
+      <br />
+      <h1 style="color: rgb(46, 127, 220); text-shadow: 1px 1px black;">Welcome</h1>
+      <br />      
+    </div>
+
+    <div class="container mt-3">
+      <br />
+      <h2 style="color: rgb(46, 127, 220); text-shadow: 1px 1px black;">Sign In</h2>
+      <br />
+      <form action="/userList" method="get">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputName" style="font-size: 23px; color: rgb(46, 127, 220); text-shadow: 1px 1px black;">Email</label>
+            <input type="text" class="form-control" id="Email" name="Email" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputAddress" style="font-size: 23px; color: rgb(46, 127, 220); text-shadow: 1px 1px black;">Password</label>
+            <input type="password" class="form-control" id="Password" name="Password" required/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <button type="submit" class="btn btn-primary" >Sign in</button>
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <h4 style="color: rgb(169, 215, 188); text-shadow: 1px 1px black;"> Don't have account yet ? Create one</h4>
+                <button class="btn btn-success" id="createUser" onclick="location.href = '/createUser';">Create Account</button>
+            </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

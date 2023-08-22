@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% user.forEach(function(u) { %>
+                <tr>
+                    <td><%= u.name %></td>
+                    <td><%= u.email %></td>
+                    <td><%= u.phone %></td>
+                    <td>
+                        <form id="deleteForm_<%= u._id %>" action="/deleteUser/<%= u._id %>" method="POST">
+                            <button type="button" onclick="confirmDelete('<%= u._id %>')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <script>
+        function confirmDelete(userId) {
+            const confirmation = confirm('Delete this user?');
+        
+            if (confirmation) {
+                const form = document.getElementById(`deleteForm_${userId}`);
+                form.submit();
+            }
+        }
+        </script>
+</body>
+</html>
