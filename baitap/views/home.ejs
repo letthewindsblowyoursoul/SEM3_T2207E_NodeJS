@@ -8,8 +8,7 @@
     <body>
         <div class="container">
             <h2>User List</h2>
-            <a href="/add-user" class="btn btn-success float-right">Add User</a>
-
+            
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -26,12 +25,12 @@
                     <td><%= usersps[i].username %></td>
                     <td><%= usersps[i].age %></td>
                     <td>
-                        <input class="btn btn-primary" type="button" value="Update"
+                        <input class="btn btn-primary" type="button" value="Update/info"
                             onclick="handleUpdateUser('<%= usersps[i]._id %>')">
                     </td>
                     <td>
-                        <input class="btn btn-primary" type="button" value="getID"
-                           id="delajax" onclick="takeid('<%= usersps[i]._id %>')">
+                        <input id="update-btn" class="btn btn-secondary" type="button" value="DELETE"
+                    onclick="handleDeleteUser('<%= usersps[i]._id %>')">   
                     </td>
                 </tr>
                 <% } %>
@@ -40,45 +39,23 @@
                 function handleUpdateUser(value) {
                     $(location).attr('href', '/update-user/' + value);
                 }
-                function takeid(value){
-                    //var click = value ;
-     document.getElementById('type').value= value;
-                }
+                
+                function handleDeleteUser(value) {
+                $.ajax({
+                    url: '/' + value,
+                    type: 'DELETE',
+                    success: function (result) {
+                        $(location).attr('href', '/');
+                    }
+                })
+            }
 
             </script>
         </div>
 
-<div class="container">
-    <h2>DEL User AJAX</h2>
-    <form action="/" method="DELETE">
-        <div class="form-group">
-            <input class="form-control" type="text" name='type' id="type" value="click on get id " disabled>
-        </div>
-        
-        <input id="deleted-btn" class="btn btn-secondary" type="button" value="DELETE">    
-    </form>
-
-</div>
-<script> function deleteItem() {
-    $.ajax({
-        type: "DELETE",
-        url: "http://localhost:2512/",
-        data: {
-            userid: req.params.type,
-        },
-        error: function(jqXHR, textStatus, err) {
-            //show error message
-            alert('text status '+textStatus+', err '+err)
-        }
-    });
-}//delItem()
-
-$('#delete-btn').on('click', function() {
-    deleteItem();
-})</script>
+ 
         <div class="container">
-            
-            <h2>ADD User AJAX</h2>
+            <h2>ADD User </h2>
             <form action="/"  method="POST">
                 <div class="form-group">
                     <label>User ID</label>
