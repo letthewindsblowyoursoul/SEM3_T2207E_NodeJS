@@ -7,7 +7,7 @@ const User = require('./models/User');
 connectToDatabase();
 
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true })); // Sử dụng express.urlencoded() để xử lý dữ liệu POST
+app.use(express.urlencoded({ extended: true })); 
 
 // Hiển thị danh sách người dùng
 app.get('/', async (req, res) => {
