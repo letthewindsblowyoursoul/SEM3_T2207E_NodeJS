@@ -27,75 +27,66 @@ var userSchema = mongoose.Schema({
         required: [true, "UserName is required"],
         unique: true,
       },
-    fullname: String,
-    address: String,
+    fullname: {
+      type: String,
+      required: [true, "Name is required"],
+    },
+    address: {
+      type: String,
+      required: [true, "Address is required"],
+    },
 });
 const User = mongoose.model("User", userSchema);
 app.use(express.json());
-
+//insert
 app.post("/user", (req, res) => {
-    const newUser = new User(req.body);
-  
-    newUser
-      .save()
-      .then((doc) => {
-        console.log(doc);
-        res.status(201).json({ message: "User created successfully", data: doc });
-      })
-      .catch((err) => {
-        console.error("Error creating user:", err);
-        res.status(500).json({ error: "Unable to create user" });
-      });
-  });
-  
-app.get("/user/:username", (req, res) => {
-    const username = req.params.username;
-  
-    User.findOne({ username })
-      .then((user) => {
-        if (!user) {
-          return res.status(404).json({ error: "User not found" });
-        }
-        res.status(200).json({ data: user });
-      })
-      .catch((err) => {
-        console.error("Error fetching user:", err);
-        res.status(500).json({ error: "Unable to fetch user" });
-      });
-  });
-  
-app.delete("/user/:username", (req, res) => {
-    const username = req.params.username;
-  
-    User.deleteOne({ username })
-      .then((user) => {
-        if (!user) {
-          return res.status(404).json({ error: "User not found" });
-        }
-        res.status(200).json({ data: user });
-      })
-      .catch((err) => {
-        console.error("Error fetching user:", err);
-        res.status(500).json({ error: "Unable to fetch user" });
-      });
-  });  
+  const newUser = new User(req.body);
 
+  newUser
+    .save()
+    .then((doc) => {
+      console.log(doc);
+      res.status(201).json({ message: "User created successfully", data: doc });
+    })
+    .catch((err) => {
+      console.error("Error creating user:", err);
+      res.status(500).json({ error: "Unable to create user" });
+    });
+});
+//delete
+app.delete("/delete/:userId", (req, res) => {
+  const userId = req.params.userId;
+
+  User.deleteOne({ userId })
+    .then((user) => {
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      res.status(200).json({ data: user });
+    })
+    .catch((err) => {
+      console.error("Error fetching user:", err);
+      res.status(500).json({ error: "Unable to fetch user" });
+    });
+});
+//// Get all
 app.get("/users", (req, res) => {
-    const username = req.params.username;
-  
-    User.find()
-      .then((user) => {
-        if (!user) {
-          return res.status(404).json({ error: "User not found" });
-        }
-        res.status(200).json({ data: user });
-      })
-      .catch((err) => {
-        console.error("Error fetching user:", err);
-        res.status(500).json({ error: "Unable to fetch user" });
-      });
-  });
+  const username = req.params.username;
+
+  User.find()
+    .then((user) => {
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      res.status(200).json({ data: user });
+      res.render('user.ejs', { users });
+    })
+    .catch((err) => {
+      console.error("Error fetching user:", err);
+      res.status(500).json({ error: "Unable to fetch user" });
+    });
+});
 
 app.listen(9005,"127.0.0.1",()=>{
-    console.log("Listening to request on port 9004");
+    console.log("Listening to request on port 9005");
 });
