@@ -1,55 +1,90 @@
-const express = require('express');
-const app = express();
-const MongoClient = require('mongodb').MongoClient;
-const ObjectID = require('mongodb').ObjectID;
-const bodyParser = require('body-parser');
+var express = require('express');
+var mongoose = require('mongoose');
+var dotenv = require('dotenv');
+const uniqueValidator = require('mongoose-unique-validator');
+const path = require('path');
 
-const url = 'mongodb://localhost:27017';
-const dbName = 'your-database-name';
+dotenv.config({ path: "./config.env"});
 
-app.set('view engine', 'ejs');
+var app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
+mongoose.connect(process.env.DATABASE_LOCAL)
+                .then(() => {
+                    console.log("Connect successfull");
+                })
+                .catch((err) => console.error("Connect failed:",err))
+                .finally(() => {
+                    console.log("Finally...");
+})
 
-MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
-  if (err) return console.log(err);
-  
-  const db = client.db(dbName);
-  const collection = db.collection('UserCollection');
 
-  // Thêm một user
-  app.post('/users', (req, res) => {
-    const newUser = {
-      UserId: req.body.UserId,
-      Username: req.body.Username,
-      Fullname: req.body.Fullname,
-      Address: req.body.Address
-    };
+var userSchema = mongoose.Schema({
+                    userid: { type: Number, unique: true },
+                    username: String,
+                    fullname: String,
+                    address: String,
+});
 
-    collection.insertOne(newUser, (err, result) => {
-      if (err) return res.send({ success: false, error: err });
-      res.redirect('/');
-    });
+userSchema.plugin(uniqueValidator, { message: '{VALUE} already exists.' });
+                
+const User = mongoose.model("User", userSchema);
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: false  }));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
-  // Xóa một user
-  app.delete('/users/:id', (req, res) => {
+app.get('/users', async (req, res) => {
+    try {
+      const users = await User.find();
+      res.json(users);
+    } catch (err) {
+      console.error('Error fetching users:', err);
+      res.status(500).json({ error: 'Error fetching users' });
+    }
+  });
+
+app.post('/add-user', async (req, res) => {
+  const { username, fullname, address } = req.body;
+
+  try {
+
+    const randomUserid = Math.floor(Math.random() * 100000);
+    const newUser = new User({
+      userid: randomUserid,
+      username,
+      fullname,
+      address
+    });
+
+    await newUser.save();
+    console.log('User inserted:', newUser);
+    res.json({ message: 'User inserted successfully' });
+  } catch (err) {
+    if (err.name === 'ValidationError') {
+      console.error('Validation Error:', err.errors);
+      res.status(400).json({ error: 'Validation error', details: err.errors });
+    } else {
+      console.error('Error inserting user:', err);
+      res.status(500).json({ error: 'Error inserting user' });
+    }
+  }
+});
+
+app.delete('/remove-user/:id', async (req, res) => {
     const userId = req.params.id;
-    collection.deleteOne({ _id: ObjectID(userId) }, (err, result) => {
-      if (err) return res.send({ success: false, error: err });
-      res.send({ success: true });
-    });
-  });
+  
+    try {
+      await User.findByIdAndRemove(userId);
+      res.json({ message: 'User removed successfully' });
+    } catch (err) {
+      console.error('Error removing user:', err);
+      res.status(500).json({ error: 'Error removing user' });
+    }
+});
 
-  // Lấy danh sách user
-  app.get('/users', (req, res) => {
-    collection.find().toArray((err, users) => {
-      if (err) return res.send({ success: false, error: err });
-      res.send(users);
-    });
-  });
 
-  app.listen(3000, () => {
-    console.log('Server started on port 3000');
-  });
+app.listen(3000,"127.0.0.1",()=>{
+    console.log("Listening to request on port 3000");
 });
