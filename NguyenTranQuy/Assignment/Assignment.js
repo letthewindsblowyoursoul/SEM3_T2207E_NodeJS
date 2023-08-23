@@ -38,7 +38,7 @@ const dataSchema = new mongoose.Schema({
     ProductStoreCode : String
 });
 
-const data = mongoose.Model("Data", dataSchema);
+const data = mongoose.model("data", dataSchema);
 
 app.use(express.json());
 
