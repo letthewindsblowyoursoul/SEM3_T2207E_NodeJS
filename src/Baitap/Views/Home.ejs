@@ -94,13 +94,18 @@
       integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity=
+		"sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous">
+	</script>
     <script>
       $(document).ready(function () {
         // Delete User
         $(".delete-button").click(function () {
           const userId = $(this).data("id");
           $.ajax({
-            url: `/delete/:${userId}`,
+            url: '/delete/' + userId,
             method: "DELETE",
             success: function () {
               location.reload();
@@ -113,7 +118,7 @@
           event.preventDefault();
           const formData = $(this).serialize();
           $.ajax({
-            url: "/post",
+            url: "http://127.0.0.1:8080/post",
             method: "POST",
             data: formData,
             success: function () {
