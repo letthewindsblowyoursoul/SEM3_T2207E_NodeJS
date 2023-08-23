@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const connectToDatabase = () => {
-  const dbName = 'your_database_name'; // Thay 'your_database_name' bằng tên cơ sở dữ liệu bạn muốn kết nối
+  const dbName = 'thaisondb'; // Thay 'your_database_name' bằng tên cơ sở dữ liệu bạn muốn kết nối
 
-  mongoose.connect(`mongodb+srv://mainhan:123@cluster0.c5zpj.mongodb.net/?retryWrites=true&w=majority`, {
+  mongoose.connect(`mongodb+srv://thaisonqwe:123@cluster0.e7pudut.mongodb.net/?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
