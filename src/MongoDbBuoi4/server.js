@@ -26,6 +26,20 @@ var userSchema = mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
+app.set('view engine', 'ejs');
+
+app.get("/user", (req, res) => {
+    User.find({})
+        .then((users) => {
+            res.status(201).json(users);
+        })
+        .catch((err) => {
+            console.error("Error fetching", err);
+            res.status(500).json({ error: "Unable"});
+        });
+});
 
 app.post("/user", (req, res) => {
     console.log("Create....");
@@ -42,6 +56,7 @@ app.post("/user", (req, res) => {
         });
 });
 
-app.listen(9003,"127.0.0.1",()=>{
-    console.log("Listening to request on port 9000");
+
+app.listen(9006,"127.0.0.1",()=>{
+    console.log("Listening to request on port 9006");
 });
