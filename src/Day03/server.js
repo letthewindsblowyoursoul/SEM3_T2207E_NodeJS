@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 const per_page = 5;
 
-const port = 3000;
+const port = 3001;
 const fs = require('fs');
 
 //Get all users

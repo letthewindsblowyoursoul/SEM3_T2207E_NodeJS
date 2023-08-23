@@ -1,4 +1,10 @@
-node_modules
-src\Node 1
-src\Node 2
-Day02
+node_modules/
+src/Node 1/
+src/Node 2/
+Day01/
+Day02/
+Day03/
+Day04/
+Day05/
+Day05_basic/
+Day05_modal/
