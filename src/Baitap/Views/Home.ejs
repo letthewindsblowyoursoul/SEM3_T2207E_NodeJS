@@ -47,7 +47,7 @@
                 <td>
                   <button
                     class="btn btn-danger delete-button"
-                    data-id="<%= user.UserId %>"
+                    data-id="<%= user._id %>"
                   >
                     Delete
                   </button>
@@ -60,17 +60,17 @@
         <div>
           <h2>Add User</h2>
           <form id="add-user-form">
-            <input type="text" name="UserId" placeholder="UserId" required />
+            <input type="text" name="Username" placeholder="UserId" required />
             <input
               type="text"
-              name="Username"
-              placeholder="Username"
+              name="full_name"
+              placeholder="fullname"
               required
             />
             <input
               type="text"
-              name="Fullname"
-              placeholder="Fullname"
+              name="age"
+              placeholder="age"
               required
             />
             <input type="text" name="Address" placeholder="Address" required />
@@ -100,7 +100,7 @@
         $(".delete-button").click(function () {
           const userId = $(this).data("id");
           $.ajax({
-            url: `/delete/${userId}`,
+            url: `/delete/:${userId}`,
             method: "DELETE",
             success: function () {
               location.reload();
