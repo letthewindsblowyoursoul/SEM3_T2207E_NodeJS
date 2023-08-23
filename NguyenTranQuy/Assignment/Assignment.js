@@ -11,13 +11,13 @@ dotenv.config();
 var ProductCollection = JSON.parse(fs.readFileSync(`${__dirname}/data/data.json`));
 
 app.set("view engine","ejs");
-/*app.get('/api/v1/data', (req, res) =>{
+app.get('/api/v1/data', (req, res) =>{
     res.status(200).json({
         status : "Success",
         data: {data}
     });
 });
-*/
+
 
 
 mongoose.connect(process.env.MongoDB)
@@ -43,7 +43,7 @@ const data = mongoose.Model("Data", dataSchema);
 app.use(express.json());
 
 app.post("/", (req, res) => {
-    const newProduct = new data(req.body);
+    const newProduct = new ProductCollection(req.body);
 
     newProduct
         .save()
