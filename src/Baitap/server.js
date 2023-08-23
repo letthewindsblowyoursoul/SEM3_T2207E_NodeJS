@@ -54,20 +54,30 @@ app.post("/user", (req, res) => {
     });
 });
 //delete
-app.delete("/delete/:userId", (req, res) => {
-  const userId = req.params.userId;
+// app.delete("/delete/:userId", (req, res) => {
+//   const userId = req.params.userId;
 
-  User.deleteOne({ userId })
-    .then((user) => {
-      if (!user) {
-        return res.status(404).json({ error: "User not found" });
-      }
-      res.status(200).json({ data: user });
-    })
-    .catch((err) => {
-      console.error("Error fetching user:", err);
-      res.status(500).json({ error: "Unable to fetch user" });
-    });
+//   User.deleteOne({ userId })
+//     .then((user) => {
+//       if (!user) {
+//         return res.status(404).json({ error: "User not found" });
+//       }
+//       res.status(200).json({ data: user });
+//     })
+//     .catch((err) => {
+//       console.error("Error fetching user:", err);
+//       res.status(500).json({ error: "Unable to fetch user" });
+//     });
+// });
+app.delete('/delete/:userId', async (req, res) => {
+  try {
+      const userId = req.params.userId;
+      await User.findOneAndDelete({ UserId: userId });
+      res.status(200).send('User deleted successfully');
+  } catch (error) {
+      res.status(500).send('Internal Server Error');
+  }
+
 });
 //// Get all
 app.get("/users", (req, res) => {
@@ -80,11 +90,24 @@ app.get("/users", (req, res) => {
       }
       res.status(200).json({ data: user });
       res.render('user.ejs', { users });
+
     })
     .catch((err) => {
       console.error("Error fetching user:", err);
       res.status(500).json({ error: "Unable to fetch user" });
     });
+});
+
+app.get("/", async (req, res) => {
+  res.set({
+      "Allow-access-Allow-Origin": "*",
+  });
+  try {
+      const users = await User.find();
+      res.render('user.ejs', { users });
+  } catch (error) {
+      res.status(500).send('Internal Server Error');
+  }
 });
 
 app.listen(9005,"127.0.0.1",()=>{

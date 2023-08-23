@@ -510,3 +510,9 @@
 node_modules
 package.json
 package-lock.json
+.DS_Store
+.DS_Store
+src/.DS_Store
+.gitignore
+src/Baitap/docker-compose.yml
+docker-compose.yml
