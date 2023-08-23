@@ -19,21 +19,17 @@ mongoose.connect(process.env.DATABASE_LOCAL)
 var userSchema = mongoose.Schema({
     userId: {
         type: String,
-        required: [true, "UserId is required"],
         unique: true,
       },
     username: {
         type: String,
-        required: [true, "UserName is required"],
         unique: true,
       },
     fullname: {
       type: String,
-      required: [true, "Name is required"],
     },
     address: {
       type: String,
-      required: [true, "Address is required"],
     },
 });
 const User = mongoose.model("User", userSchema);
@@ -41,17 +37,18 @@ app.use(express.json());
 //insert
 app.post("/user", (req, res) => {
   const newUser = new User(req.body);
-
-  newUser
-    .save()
-    .then((doc) => {
-      console.log(doc);
-      res.status(201).json({ message: "User created successfully", data: doc });
-    })
-    .catch((err) => {
-      console.error("Error creating user:", err);
-      res.status(500).json({ error: "Unable to create user" });
-    });
+  console.log(newUser.userId +" "+ newUser.username);
+console.log(JSON.parse(newUser));
+  // newUser
+  //   .save()
+  //   .then((doc) => {
+  //     console.log(doc);
+  //     res.status(201).json({ message: "User created successfully", data: doc });
+  //   })
+  //   .catch((err) => {
+  //     console.error("Error creating user:", err);
+  //     res.status(500).json({ error: "Unable to create user" });
+  //   });
 });
 //delete
 // app.delete("/delete/:userId", (req, res) => {
