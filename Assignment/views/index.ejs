@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>User Collection</title>
+    </head>
+    <body>
+        <h1>Add User</h1>
+        <form id="addUser">
+            <input type="text" name="UserId" placeholder="UserId">
+            <input type="text" name="UserName" placeholder="UserName">
+            <input type="text" name="FullName" placeholder="FullName">
+            <input type="text" name="Address" placeholder="Address">
+            <button type="submit">Add User</button>
+        </form>
+        <hr/>
+        <h1>Delete User</h1>
+        <form id="deleteUser">
+            <input type="number" name="UserId" placeholder="UserId">
+            <button type="submit">Delete User</button>
+        </form>
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                //addUser
+                $('#addUser').submit(function(event){
+                    event.preventDefault();
+                    const formData = $(this).serialize();
+                    $.ajax({
+                        type: 'POST',
+                        url: `/addUser`,
+                        data: formData,
+                        success: function(response){
+                            alert('User added successfully');
+                        },
+                        error: function(error){
+                            alert('User could not be added successfully');
+                        }
+                    })
+                });
+
+                //deleteUser
+                $('#deleteUser').click(function(){
+                    const userId = $(this).find("input[name='UserId']").val();
+                    $.ajax({
+                        type: 'Delete',
+                        url: `/deleteUser/${userId}`,
+                        success: function(response){
+                            alert("User deleted successfully");
+                        },
+                        error: function(error){
+                            alert("Error deleting user");
+                        }
+                    })
+                });
+                
+            });
+        </script>
+    </body>
+</html>

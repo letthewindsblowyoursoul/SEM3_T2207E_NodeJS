@@ -1,0 +1,9 @@
+Practice: Sử dụng các thư viện express, ejs, mongodb 
+Cho một UserCollection (UserId, Username, Fullname, Address)
+Yêu cầu:
+1. Viết Resfull API
+     Thêm 1 user (UserId, Username, Fullname, Address)
+     Xóa 1 user thông qua UserId
+     Lấy danh sách user trong database
+2. Sử dụng ajax, để thực hiện thêm, xóa 1 user từ danh sách user
+3. Thời hạn nộp bài: trước 17h ngày 23/08/2023
